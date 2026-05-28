@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="id" class="light">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Admin Panel – Undangan</title>
+    <meta name="robots" content="noindex, nofollow"/>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Be+Vietnam+Pro:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+
+    <!-- Firebase SDK (Compat) -->
+    <script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore-compat.js"></script>
+
+    <script>
+    // ============================================================
+    // ⚙️  KONFIGURASI – SESUAIKAN SEBELUM DEPLOY
+    // ============================================================
+
+    // Password untuk masuk ke panel admin
+    const ADMIN_PASSWORD = "wisuda2024";
+
+    // Isi dengan data Firebase kamu (lihat SETUP.md untuk panduan)
+    const FIREBASE_CONFIG = {
+        apiKey: "AIzaSyB5bxKAPddWMyA-jiozbVjC_H3PRmKIoN0",
+        authDomain: "undangan-3a37c.firebaseapp.com",
+        databaseURL: "https://undangan-3a37c-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "undangan-3a37c",
+        storageBucket: "undangan-3a37c.firebasestorage.app",
+        messagingSenderId: "891873336192",
+        appId: "1:891873336192:web:4c1082f6bde0acb47fbf65",
+        measurementId: "G-JBKP1QLY5F"
+    };
+
+    // ============================================================
+    </script>
+
+    <script id="tailwind-config">
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily: {
+                    sans:    ["Be Vietnam Pro", "sans-serif"],
+                    display: ["Quicksand", "sans-serif"],
+                },
+                colors: {
+                    primary:               "rgb(var(--c-primary)  / <alpha-value>)",
+                    "on-primary":          "rgb(var(--c-on-primary) / <alpha-value>)",
+                    "primary-container":   "rgb(var(--c-primary-container) / <alpha-value>)",
+                    "on-primary-container":"rgb(var(--c-on-primary-container) / <alpha-value>)",
+                    tertiary:              "rgb(var(--c-tertiary) / <alpha-value>)",
+                    "on-tertiary":         "rgb(var(--c-on-tertiary) / <alpha-value>)",
+                    "tertiary-container":  "rgb(var(--c-tertiary-container) / <alpha-value>)",
+                    surface:               "rgb(var(--c-surface) / <alpha-value>)",
+                    "on-surface":          "rgb(var(--c-on-surface) / <alpha-value>)",
+                    "surface-container":   "rgb(var(--c-surface-container) / <alpha-value>)",
+                    "surface-container-high":"rgb(var(--c-surface-container-high) / <alpha-value>)",
+                    "on-surface-variant":  "rgb(var(--c-on-surface-variant) / <alpha-value>)",
+                    outline:               "rgb(var(--c-outline) / <alpha-value>)",
+                    "outline-variant":     "rgb(var(--c-outline-variant) / <alpha-value>)",
+                },
+            }
+        }
+    }
+    </script>
+
+    <style>
+        :root {
+            --c-primary:                134 77 97;
+            --c-on-primary:             255 255 255;
+            --c-primary-container:      255 183 206;
+            --c-on-primary-container:   123 68 88;
+            --c-tertiary:               169 49 80;
+            --c-on-tertiary:            255 255 255;
+            --c-tertiary-container:     255 184 194;
+            --c-surface:                255 247 249;
+            --c-on-surface:             33 25 30;
+            --c-surface-container:      250 234 241;
+            --c-surface-container-high: 244 228 235;
+            --c-on-surface-variant:     81 67 71;
+            --c-outline:                131 115 119;
+            --c-outline-variant:        213 194 198;
+        }
+
+        body {
+            background-color: rgb(var(--c-surface));
+            background-image: radial-gradient(rgb(255 217 227) 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+            min-height: 100vh;
+        }
+
+        .glass {
+            background: rgba(255,255,255,0.72);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,0.55);
+        }
+
+        .nav-link { transition: all .2s; }
+        .nav-link.active {
+            background: rgb(var(--c-primary-container));
+            color: rgb(var(--c-on-primary-container));
+            font-weight: 700;
+        }
+        .nav-link:not(.active):hover { background: rgb(var(--c-surface-container)); }
+
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-thumb { background: rgb(var(--c-primary)); border-radius: 10px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+
+        .badge-hadir    { background:#dcfce7; color:#15803d; }
+        .badge-tidak    { background:#fee2e2; color:#dc2626; }
+
+        .input-base {
+            width:100%; padding: .85rem 1.4rem; border-radius:9999px;
+            background: rgb(var(--c-surface-container));
+            border: 2px solid transparent;
+            outline: none; transition: border-color .2s;
+            color: rgb(var(--c-on-surface));
+        }
+        .input-base:focus { border-color: rgb(var(--c-primary-container)); }
+
+        .btn-primary {
+            background: rgb(var(--c-primary));
+            color: #fff; border-radius: 9999px;
+            padding: .85rem 2rem; font-weight: 700;
+            transition: all .2s; display:inline-flex; align-items:center; gap:.4rem;
+            box-shadow: 0 8px 20px -4px rgba(134,77,97,.3);
+        }
+        .btn-primary:hover  { opacity:.9; }
+        .btn-primary:active { transform: scale(.96); }
+
+        .btn-outline {
+            background: rgba(255,255,255,.7);
+            border: 1.5px solid rgb(var(--c-outline-variant));
+            border-radius: 9999px; padding: .6rem 1.2rem;
+            font-weight: 600; font-size:.85rem;
+            transition: all .2s; display:inline-flex; align-items:center; gap:.35rem;
+        }
+        .btn-outline:hover { background: rgb(var(--c-primary-container) / 0.2); }
+        .btn-outline:active { transform: scale(.96); }
+
+        .rsvp-filter { transition: all .2s; }
+        .rsvp-filter.active { background: rgb(var(--c-primary)); color:#fff; }
+        .rsvp-filter:not(.active) {
+            background: rgba(255,255,255,.7);
+            border: 1.5px solid rgb(var(--c-outline-variant));
+            color: rgb(var(--c-on-surface-variant));
+        }
+    </style>
+</head>
+<body class="font-sans text-on-surface">
+
+<!-- ===================== LOGIN SCREEN ===================== -->
+<div id="login-screen" class="min-h-screen flex items-center justify-center p-6">
+    <div class="glass rounded-3xl p-8 md:p-12 w-full max-w-md shadow-2xl shadow-primary/10">
+        <div class="text-center mb-8">
+            <div class="w-20 h-20 bg-primary-container rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-primary/20">
+                <span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings:'FILL' 1">school</span>
+            </div>
+            <h1 class="font-display text-3xl font-bold text-primary">Admin Panel</h1>
+            <p class="text-on-surface-variant mt-1 text-sm">Undangan – Undangan Wisuda</p>
+        </div>
+
+        <form id="login-form" class="space-y-4">
+            <div>
+                <label class="block text-sm font-semibold text-primary mb-2 ml-1">Password Admin</label>
+                <input type="password" id="password-input"
+                    placeholder="Masukkan password…"
+                    class="input-base" autocomplete="current-password"/>
+            </div>
+            <div id="login-error" class="hidden text-red-600 text-sm text-center bg-red-50 rounded-full py-2.5 px-4 font-medium">
+                Password salah. Coba lagi!
+            </div>
+            <button type="submit" class="btn-primary w-full justify-center text-base">
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">lock_open</span>
+                Masuk ke Admin
+            </button>
+        </form>
+
+        <div id="firebase-warning" class="hidden mt-5 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-amber-800 text-sm leading-relaxed">
+            <div class="flex gap-2">
+                <span class="material-symbols-outlined text-lg flex-shrink-0 text-amber-600">warning</span>
+                <div>
+                    <strong>Firebase belum dikonfigurasi.</strong><br>
+                    RSVP hanya tersimpan di browser ini. Buka file <code class="bg-amber-100 px-1 rounded">SETUP.md</code> untuk panduan integrasi Firebase agar RSVP bisa terbaca dari semua perangkat.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== ADMIN PANEL ===================== -->
+<div id="admin-panel" class="hidden min-h-screen">
+
+    <!-- TOP HEADER -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-outline-variant/30 h-16 flex items-center justify-between px-4 md:px-8 shadow-sm">
+        <div class="flex items-center gap-3">
+            <button id="hamburger" class="md:hidden text-primary">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1">school</span>
+                <span class="font-display font-bold text-primary text-lg">Admin Panel</span>
+            </div>
+        </div>
+        <div class="flex items-center gap-1 md:gap-3">
+            <div id="firebase-indicator" class="flex items-center gap-1.5 text-xs text-on-surface-variant px-3 py-1.5 rounded-full bg-surface-container">
+                <span id="firebase-dot" class="w-2 h-2 rounded-full bg-gray-300 transition-colors"></span>
+                <span id="firebase-label">Firebase…</span>
+            </div>
+            <a href="/" target="_blank" class="hidden sm:flex items-center gap-1 text-sm text-on-surface-variant hover:text-primary transition-colors px-3 py-2 rounded-full hover:bg-surface-container">
+                <span class="material-symbols-outlined text-base">open_in_new</span>
+                Lihat Undangan
+            </a>
+            <button id="logout-btn" class="flex items-center gap-1 text-sm text-on-surface-variant hover:text-primary transition-colors px-3 py-2 rounded-full hover:bg-surface-container">
+                <span class="material-symbols-outlined text-base">logout</span>
+                <span class="hidden sm:inline">Keluar</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- SIDEBAR (desktop) -->
+        <aside id="sidebar-desktop" class="hidden md:flex flex-col w-60 min-h-[calc(100vh-4rem)] fixed top-16 left-0 bottom-0 z-40 bg-white/60 backdrop-blur-md border-r border-outline-variant/30 p-4">
+            <nav class="space-y-1">
+                <button class="nav-link active w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm" data-page="dashboard">
+                    <span class="material-symbols-outlined text-lg" style="font-variation-settings:'FILL' 1">dashboard</span> Dashboard
+                </button>
+                <button class="nav-link w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm text-on-surface-variant" data-page="guests">
+                    <span class="material-symbols-outlined text-lg" style="font-variation-settings:'FILL' 1">group</span> Kelola Tamu
+                </button>
+                <button class="nav-link w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm text-on-surface-variant" data-page="rsvp">
+                    <span class="material-symbols-outlined text-lg" style="font-variation-settings:'FILL' 1">mail</span> Semua RSVP
+                </button>
+            </nav>
+        </aside>
+
+        <!-- SIDEBAR (mobile overlay) -->
+        <div id="mob-overlay" class="hidden fixed inset-0 bg-black/30 z-30 md:hidden"></div>
+        <aside id="sidebar-mobile" class="hidden fixed top-16 left-0 bottom-0 w-60 bg-white z-40 border-r border-outline-variant/30 p-4 md:hidden">
+            <nav class="space-y-1">
+                <button class="nav-link active w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm" data-page="dashboard">
+                    <span class="material-symbols-outlined text-lg" style="font-variation-settings:'FILL' 1">dashboard</span> Dashboard
+                </button>
+                <button class="nav-link w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm text-on-surface-variant" data-page="guests">
+                    <span class="material-symbols-outlined text-lg" style="font-variation-settings:'FILL' 1">group</span> Kelola Tamu
+                </button>
+                <button class="nav-link w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm text-on-surface-variant" data-page="rsvp">
+                    <span class="material-symbols-outlined text-lg" style="font-variation-settings:'FILL' 1">mail</span> Semua RSVP
+                </button>
+            </nav>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="flex-1 md:ml-60 p-4 md:p-8 space-y-0">
+
+            <!-- ===== DASHBOARD ===== -->
+            <section id="page-dashboard" class="page">
+                <div class="mb-7">
+                    <h2 class="font-display text-2xl font-bold text-primary">Dashboard</h2>
+                    <p class="text-on-surface-variant text-sm">Selamat datang di panel admin undangan wisuda ✨</p>
+                </div>
+
+                <!-- Stats -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-7">
+                    <div class="glass rounded-2xl p-5 shadow-sm">
+                        <div class="w-9 h-9 rounded-full bg-primary-container flex items-center justify-center mb-3">
+                            <span class="material-symbols-outlined text-primary text-base" style="font-variation-settings:'FILL' 1">group</span>
+                        </div>
+                        <p class="font-display text-3xl font-bold text-primary" id="stat-tamu">0</p>
+                        <p class="text-xs text-on-surface-variant mt-0.5">Total Tamu Dibuat</p>
+                    </div>
+                    <div class="glass rounded-2xl p-5 shadow-sm">
+                        <div class="w-9 h-9 rounded-full bg-tertiary-container flex items-center justify-center mb-3">
+                            <span class="material-symbols-outlined text-tertiary text-base" style="font-variation-settings:'FILL' 1">mail</span>
+                        </div>
+                        <p class="font-display text-3xl font-bold text-tertiary" id="stat-rsvp">0</p>
+                        <p class="text-xs text-on-surface-variant mt-0.5">Total RSVP Masuk</p>
+                    </div>
+                    <div class="glass rounded-2xl p-5 shadow-sm">
+                        <div class="w-9 h-9 rounded-full bg-green-100 flex items-center justify-center mb-3">
+                            <span class="material-symbols-outlined text-green-600 text-base" style="font-variation-settings:'FILL' 1">check_circle</span>
+                        </div>
+                        <p class="font-display text-3xl font-bold text-green-600" id="stat-hadir">0</p>
+                        <p class="text-xs text-on-surface-variant mt-0.5">Konfirmasi Hadir</p>
+                    </div>
+                    <div class="glass rounded-2xl p-5 shadow-sm">
+                        <div class="w-9 h-9 rounded-full bg-red-100 flex items-center justify-center mb-3">
+                            <span class="material-symbols-outlined text-red-500 text-base" style="font-variation-settings:'FILL' 1">cancel</span>
+                        </div>
+                        <p class="font-display text-3xl font-bold text-red-500" id="stat-tidak">0</p>
+                        <p class="text-xs text-on-surface-variant mt-0.5">Tidak Bisa Hadir</p>
+                    </div>
+                </div>
+
+                <!-- Recent RSVP -->
+                <div class="glass rounded-2xl p-6 shadow-sm">
+                    <h3 class="font-display font-bold text-primary text-lg mb-5 flex items-center gap-2">
+                        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">notifications_active</span>
+                        RSVP Terbaru
+                    </h3>
+                    <div id="recent-rsvp" class="space-y-3">
+                        <p class="text-on-surface-variant text-center py-8 text-sm">Belum ada RSVP masuk</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== KELOLA TAMU ===== -->
+            <section id="page-guests" class="page hidden">
+                <div class="mb-7">
+                    <h2 class="font-display text-2xl font-bold text-primary">Kelola Tamu</h2>
+                    <p class="text-on-surface-variant text-sm">Buat link undangan personal dengan nama tamu masing-masing</p>
+                </div>
+
+                <!-- Buat Undangan Baru -->
+                <div class="glass rounded-2xl p-6 shadow-sm mb-5">
+                    <h3 class="font-display font-semibold text-primary mb-4 flex items-center gap-2 text-base">
+                        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">add_circle</span>
+                        Buat Link Undangan Baru
+                    </h3>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <input type="text" id="new-guest-name"
+                            placeholder="Nama tamu (contoh: Budi Santoso dan Keluarga)"
+                            class="input-base flex-1 text-sm"/>
+                        <button id="btn-create" class="btn-primary whitespace-nowrap">
+                            <span class="material-symbols-outlined text-lg">add_link</span>
+                            Buat Link
+                        </button>
+                    </div>
+
+                    <!-- Preview Link -->
+                    <div id="link-preview" class="hidden mt-4 p-4 bg-primary-container/20 rounded-2xl border border-primary-container/40">
+                        <p class="text-sm font-semibold text-primary mb-2 flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-base" style="font-variation-settings:'FILL' 1">celebration</span>
+                            Link berhasil dibuat!
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <input type="text" id="preview-url" readonly
+                                class="flex-1 px-4 py-3 rounded-xl bg-white/80 border border-outline-variant/50 text-sm text-on-surface font-mono"/>
+                            <button id="btn-copy-preview" class="btn-primary whitespace-nowrap !py-3 !px-5 text-sm">
+                                <span class="material-symbols-outlined text-sm">content_copy</span>
+                                Salin
+                            </button>
+                        </div>
+                        <p class="text-xs text-on-surface-variant mt-2 ml-1">
+                            Kirimkan link ini ke tamu. Nama di cover undangan akan menyesuaikan secara otomatis.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Daftar Tamu -->
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4">
+                    <div class="relative flex-1 max-w-sm">
+                        <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-base">search</span>
+                        <input type="text" id="guest-search" placeholder="Cari nama tamu…"
+                            class="w-full pl-10 pr-4 py-2.5 rounded-full bg-white/70 border border-outline-variant/50 focus:border-primary-container focus:outline-none text-sm"/>
+                    </div>
+                    <span class="text-sm text-on-surface-variant">
+                        <span id="guest-count" class="font-bold text-primary">0</span> tamu dibuat
+                    </span>
+                </div>
+
+                <div id="guest-list" class="space-y-3"></div>
+            </section>
+
+            <!-- ===== SEMUA RSVP ===== -->
+            <section id="page-rsvp" class="page hidden">
+                <div class="mb-6">
+                    <h2 class="font-display text-2xl font-bold text-primary">Semua RSVP</h2>
+                    <p class="text-on-surface-variant text-sm">Semua respon dari seluruh link undangan terkumpul di sini</p>
+                </div>
+
+                <!-- Filter & Search -->
+                <div class="flex flex-wrap items-center gap-3 mb-5">
+                    <button class="rsvp-filter active px-5 py-2 rounded-full text-sm font-semibold" data-filter="all">Semua</button>
+                    <button class="rsvp-filter px-5 py-2 rounded-full text-sm font-semibold" data-filter="hadir">✅ Hadir</button>
+                    <button class="rsvp-filter px-5 py-2 rounded-full text-sm font-semibold" data-filter="tidak">❌ Tidak Bisa</button>
+                    <div class="flex-1"></div>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+                        <input type="text" id="rsvp-search" placeholder="Cari nama…"
+                            class="pl-9 pr-4 py-2 rounded-full bg-white/70 border border-outline-variant/50 focus:border-primary-container focus:outline-none text-sm"/>
+                    </div>
+                    <button id="btn-export" class="btn-outline">
+                        <span class="material-symbols-outlined text-sm">download</span>
+                        Export CSV
+                    </button>
+                </div>
+
+                <div id="rsvp-list" class="space-y-3"></div>
+            </section>
+
+        </main>
+    </div>
+</div><!-- end admin-panel -->
+
+<script>
+// ============================================================
+// STATE
+// ============================================================
+let db        = null;
+let fbReady   = false;
+let guestData = [];
+let rsvpData  = [];
+
+// ============================================================
+// FIREBASE INIT
+// ============================================================
+function initFirebase() {
+    try {
+        if (FIREBASE_CONFIG.apiKey === "GANTI_DENGAN_API_KEY") {
+            document.getElementById('firebase-warning').classList.remove('hidden');
+            setFirebaseStatus(false, 'Firebase Belum Dikonfigurasi');
+            return;
+        }
+        firebase.initializeApp(FIREBASE_CONFIG);
+        db = firebase.firestore();
+        fbReady = true;
+        setFirebaseStatus(true, 'Firebase Terhubung');
+    } catch(e) {
+        console.error('Firebase error:', e);
+        setFirebaseStatus(false, 'Firebase Error');
+    }
+}
+
+function setFirebaseStatus(ok, label) {
+    document.getElementById('firebase-dot').style.backgroundColor  = ok ? '#22c55e' : '#9ca3af';
+    document.getElementById('firebase-label').textContent = label;
+}
+
+// ============================================================
+// AUTH
+// ============================================================
+document.getElementById('login-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const pwd = document.getElementById('password-input').value;
+    const saved = localStorage.getItem('admin_pwd') || ADMIN_PASSWORD;
+    if (pwd === saved) {
+        sessionStorage.setItem('adm_auth', '1');
+        showAdminPanel();
+    } else {
+        const err = document.getElementById('login-error');
+        err.classList.remove('hidden');
+        setTimeout(() => err.classList.add('hidden'), 3000);
+    }
+});
+
+document.getElementById('logout-btn').addEventListener('click', () => {
+    sessionStorage.removeItem('adm_auth');
+    document.getElementById('admin-panel').classList.add('hidden');
+    document.getElementById('login-screen').classList.remove('hidden');
+    document.getElementById('password-input').value = '';
+});
+
+function showAdminPanel() {
+    document.getElementById('login-screen').classList.add('hidden');
+    document.getElementById('admin-panel').classList.remove('hidden');
+    loadAll();
+}
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+const pages = {
+    dashboard: document.getElementById('page-dashboard'),
+    guests:    document.getElementById('page-guests'),
+    rsvp:      document.getElementById('page-rsvp'),
+};
+
+function switchPage(name) {
+    Object.values(pages).forEach(p => p.classList.add('hidden'));
+    if (pages[name]) pages[name].classList.remove('hidden');
+
+    document.querySelectorAll('.nav-link').forEach(l => {
+        const isActive = l.dataset.page === name;
+        l.classList.toggle('active', isActive);
+        l.classList.toggle('text-on-surface-variant', !isActive);
+    });
+
+    // close mobile sidebar
+    document.getElementById('sidebar-mobile').classList.add('hidden');
+    document.getElementById('mob-overlay').classList.add('hidden');
+}
+
+document.querySelectorAll('.nav-link').forEach(l =>
+    l.addEventListener('click', () => switchPage(l.dataset.page)));
+
+document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('sidebar-mobile').classList.toggle('hidden');
+    document.getElementById('mob-overlay').classList.toggle('hidden');
+});
+document.getElementById('mob-overlay').addEventListener('click', () => {
+    document.getElementById('sidebar-mobile').classList.add('hidden');
+    document.getElementById('mob-overlay').classList.add('hidden');
+});
+
+// ============================================================
+// DATA – LOAD
+// ============================================================
+function loadAll() {
+    if (fbReady && db) {
+        // Real-time listeners
+        db.collection("invitations")
+        .onSnapshot((snapshot) => {
+            guestData = [];
+            snapshot.forEach((doc) => {
+                guestData.push({
+                    id: doc.id,
+                    ...doc.data()
+                });
+            });
+            guestData.sort((a,b) => (b.createdAt||0) - (a.createdAt||0));
+            refreshGuests();
+            refreshStats();
+        });
+    } else {
+        // localStorage fallback
+        guestData = JSON.parse(localStorage.getItem('admin_guests') || '[]');
+        rsvpData  = JSON.parse(localStorage.getItem('shared_rsvp') || '[]');
+        guestData.sort((a,b) => (b.createdAt||0) - (a.createdAt||0));
+        rsvpData.sort((a,b)  => (b.waktu||0)  - (a.waktu||0));
+        refreshGuests();
+        refreshRsvp();
+        refreshRecent();
+        refreshStats();
+    }
+    fetchRsvpData();
+}
+
+async function fetchRsvpData() {
+    try {
+        const response = await fetch('/api/rsvp');
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || 'Gagal memuat RSVP dari API.');
+
+        rsvpData = Array.isArray(data) ? data : [];
+        localStorage.setItem('shared_rsvp', JSON.stringify(rsvpData));
+    } catch (error) {
+        console.error('Neon RSVP fetch error:', error);
+        rsvpData = JSON.parse(localStorage.getItem('shared_rsvp') || '[]');
+    }
+    rsvpData.sort((a,b) => (b.waktu||0) - (a.waktu||0));
+    refreshRsvp();
+    refreshRecent();
+    refreshStats();
+}
+
+// ============================================================
+// STATS
+// ============================================================
+function refreshStats() {
+    document.getElementById('stat-tamu').textContent  = guestData.length;
+    document.getElementById('stat-rsvp').textContent  = rsvpData.length;
+    document.getElementById('stat-hadir').textContent = rsvpData.filter(r=>r.attendance==='HADIR').length;
+    document.getElementById('stat-tidak').textContent = rsvpData.filter(r=>r.attendance==='TIDAK BISA').length;
+}
+
+// ============================================================
+// GUESTS
+// ============================================================
+function makeUrl(name) {
+    return `${window.location.origin}/?to=${encodeURIComponent(name)}`;
+}
+
+document.getElementById('btn-create').addEventListener('click', createGuest);
+document.getElementById('new-guest-name').addEventListener('keydown', e => {
+    if (e.key === 'Enter') createGuest();
+});
+
+function createGuest() {
+    const name = document.getElementById('new-guest-name').value.trim();
+    if (!name) { document.getElementById('new-guest-name').focus(); return; }
+
+    const guest = { name, url: makeUrl(name), createdAt: Date.now() };
+
+    if (fbReady && db) {
+        db.collection("invitations").add(guest);
+    } else {
+        const g = JSON.parse(localStorage.getItem('admin_guests') || '[]');
+        guest.id = 'g_' + Date.now();
+        g.unshift(guest);
+        localStorage.setItem('admin_guests', JSON.stringify(g));
+        guestData = g;
+        refreshGuests();
+        refreshStats();
+    }
+
+    // Show link preview
+    document.getElementById('preview-url').value = guest.url;
+    document.getElementById('link-preview').classList.remove('hidden');
+    document.getElementById('new-guest-name').value = '';
+}
+
+document.getElementById('btn-copy-preview').addEventListener('click', function() {
+    navigator.clipboard.writeText(document.getElementById('preview-url').value);
+    this.innerHTML = '<span class="material-symbols-outlined text-sm">check</span> Tersalin!';
+    setTimeout(() => {
+        this.innerHTML = '<span class="material-symbols-outlined text-sm">content_copy</span> Salin';
+    }, 2500);
+});
+
+function deleteGuest(id) {
+    if (!confirm('Hapus undangan ini? Link tidak bisa digunakan lagi.')) return;
+    if (fbReady && db) {
+        db.collection("invitations").doc(id).delete();
+    } else {
+        const g = JSON.parse(localStorage.getItem('admin_guests') || '[]').filter(x => x.id !== id);
+        localStorage.setItem('admin_guests', JSON.stringify(g));
+        guestData = g;
+        refreshGuests();
+        refreshStats();
+    }
+}
+
+function copyLink(url, btn) {
+    navigator.clipboard.writeText(url);
+    const orig = btn.innerHTML;
+    btn.innerHTML = '<span class="material-symbols-outlined text-sm">check</span> Tersalin!';
+    setTimeout(() => btn.innerHTML = orig, 2500);
+}
+
+let guestSearchQ = '';
+document.getElementById('guest-search').addEventListener('input', function() {
+    guestSearchQ = this.value;
+    refreshGuests();
+});
+
+function refreshGuests() {
+    const q = guestSearchQ.toLowerCase();
+    const list = guestData.filter(g => !q || g.name.toLowerCase().includes(q));
+    document.getElementById('guest-count').textContent = list.length;
+    const container = document.getElementById('guest-list');
+
+    if (!list.length) {
+        container.innerHTML = `<div class="glass rounded-2xl p-10 text-center text-on-surface-variant text-sm">
+            ${guestSearchQ ? 'Tidak ditemukan. Coba kata kunci lain.' : 'Belum ada tamu dibuat. Mulai buat link undangan pertama di atas!'}
+        </div>`;
+        return;
+    }
+
+    container.innerHTML = list.map(g => {
+        const url  = g.url || makeUrl(g.name);
+        const date = g.createdAt
+            ? new Date(g.createdAt).toLocaleDateString('id-ID', {day:'numeric',month:'long',year:'numeric'})
+            : '–';
+        return `
+        <div class="glass rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center gap-4">
+            <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-0.5">
+                    <span class="material-symbols-outlined text-primary text-base" style="font-variation-settings:'FILL' 1">person</span>
+                    <p class="font-display font-bold text-primary text-base">${escHtml(g.name)}</p>
+                </div>
+                <p class="text-xs text-on-surface-variant truncate font-mono">${url}</p>
+                <p class="text-xs text-on-surface-variant mt-0.5">Dibuat: ${date}</p>
+            </div>
+            <div class="flex items-center gap-2 flex-shrink-0">
+                <button onclick="copyLink('${url}', this)" class="btn-outline text-xs">
+                    <span class="material-symbols-outlined text-xs">content_copy</span> Salin Link
+                </button>
+                <a href="${url}" target="_blank"
+                    class="p-2 rounded-full bg-surface-container hover:bg-primary-container/30 transition-colors" title="Buka undangan">
+                    <span class="material-symbols-outlined text-sm text-primary">open_in_new</span>
+                </a>
+                <button onclick="deleteGuest('${g.id}')"
+                    class="p-2 rounded-full bg-red-50 hover:bg-red-100 transition-colors" title="Hapus">
+                    <span class="material-symbols-outlined text-sm text-red-500">delete</span>
+                </button>
+            </div>
+        </div>`;
+    }).join('');
+}
+
+// ============================================================
+// RSVP LIST
+// ============================================================
+let rsvpFilter = 'all';
+let rsvpSearch = '';
+
+function getRsvpName(rsvp) {
+    return rsvp.nama || rsvp.name || '';
+}
+
+function getRsvpMessage(rsvp) {
+    return rsvp.pesan || rsvp.message || '';
+}
+
+document.querySelectorAll('.rsvp-filter').forEach(btn => {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.rsvp-filter').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        rsvpFilter = this.dataset.filter;
+        refreshRsvp();
+    });
+});
+document.getElementById('rsvp-search').addEventListener('input', function() {
+    rsvpSearch = this.value.toLowerCase();
+    refreshRsvp();
+});
+
+function refreshRsvp() {
+    const filtered = rsvpData.filter(r => {
+        const matchFilter =
+            rsvpFilter === 'all' ||
+            (rsvpFilter === 'hadir' && r.attendance === 'HADIR') ||
+            (rsvpFilter === 'tidak' && r.attendance === 'TIDAK BISA');
+        const matchSearch =
+            !rsvpSearch ||
+            getRsvpName(r).toLowerCase().includes(rsvpSearch) ||
+            getRsvpMessage(r).toLowerCase().includes(rsvpSearch);
+        return matchFilter && matchSearch;
+    });
+
+    const container = document.getElementById('rsvp-list');
+
+    if (!filtered.length) {
+        container.innerHTML = `<div class="glass rounded-2xl p-10 text-center text-on-surface-variant text-sm">
+            ${rsvpSearch || rsvpFilter !== 'all' ? 'Tidak ada RSVP yang sesuai filter.' : 'Belum ada RSVP masuk.'}
+        </div>`;
+        return;
+    }
+
+    container.innerHTML = filtered.map(r => {
+        const isHadir = r.attendance === 'HADIR';
+        const date = r.waktu
+            ? new Date(r.waktu).toLocaleDateString('id-ID', {day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'})
+            : '–';
+        return `
+        <div class="glass rounded-2xl p-5 flex flex-col sm:flex-row gap-4">
+            <div class="flex items-center gap-3 sm:w-44 flex-shrink-0">
+                <div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings:'FILL' 1">person</span>
+                </div>
+                <div class="min-w-0">
+                    <p class="font-semibold text-primary text-sm truncate">${escHtml(getRsvpName(r))}</p>
+                    <p class="text-xs text-on-surface-variant">${date}</p>
+                </div>
+            </div>
+            <div class="flex-1 min-w-0">
+                <p class="text-on-surface-variant text-sm italic">"${escHtml(getRsvpMessage(r)||'–')}"</p>
+                ${r.invitedAs ? `<p class="text-xs text-outline mt-1">Link: ?to=${escHtml(r.invitedAs)}</p>` : ''}
+            </div>
+            <div class="flex-shrink-0 text-right">
+                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold ${isHadir ? 'badge-hadir' : 'badge-tidak'}">
+                    <span class="material-symbols-outlined text-xs" style="font-variation-settings:'FILL' 1">${isHadir ? 'check_circle' : 'cancel'}</span>
+                    ${r.attendance}
+                </span>
+                ${r.guests ? `<p class="text-xs text-on-surface-variant mt-1">${r.guests} orang</p>` : ''}
+            </div>
+        </div>`;
+    }).join('');
+}
+
+function refreshRecent() {
+    const container = document.getElementById('recent-rsvp');
+    const recent = rsvpData.slice(0, 6);
+
+    if (!recent.length) {
+        container.innerHTML = '<p class="text-on-surface-variant text-sm text-center py-6">Belum ada RSVP masuk</p>';
+        return;
+    }
+
+    container.innerHTML = recent.map(r => {
+        const isHadir = r.attendance === 'HADIR';
+        const date = r.waktu
+            ? new Date(r.waktu).toLocaleDateString('id-ID', {day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})
+            : '–';
+        return `
+        <div class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-surface-container transition-colors">
+            <span class="material-symbols-outlined text-${isHadir ? 'green-500' : 'red-400'} flex-shrink-0"
+                style="font-variation-settings:'FILL' 1">${isHadir ? 'check_circle' : 'cancel'}</span>
+            <div class="flex-1 min-w-0">
+                <p class="font-semibold text-sm text-on-surface">${escHtml(getRsvpName(r))}</p>
+                <p class="text-xs text-on-surface-variant truncate">${escHtml(getRsvpMessage(r)||'–')}</p>
+            </div>
+            <span class="text-xs text-on-surface-variant whitespace-nowrap">${date}</span>
+        </div>`;
+    }).join('');
+}
+
+// ============================================================
+// EXPORT CSV
+// ============================================================
+document.getElementById('btn-export').addEventListener('click', () => {
+    const headers = ['Nama','Kehadiran','Jumlah Tamu','Pesan','Link (?to=)','Waktu'];
+    const rows = rsvpData.map(r => [
+        `"${getRsvpName(r).replace(/"/g,'""')}"`,
+        r.attendance,
+        r.guests || 1,
+        `"${getRsvpMessage(r).replace(/"/g,'""')}"`,
+        r.invitedAs || '',
+        r.waktu ? new Date(r.waktu).toLocaleString('id-ID') : ''
+    ]);
+    const csv = [headers, ...rows].map(r => r.join(',')).join('\n');
+    const blob = new Blob(['\uFEFF' + csv], { type:'text/csv;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `rsvp-wisuda-${Date.now()}.csv`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+});
+
+// ============================================================
+// UTILITY
+// ============================================================
+function escHtml(str) {
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ============================================================
+// INIT
+// ============================================================
+initFirebase();
+if (sessionStorage.getItem('adm_auth') === '1') showAdminPanel();
+</script>
+</body>
+</html>

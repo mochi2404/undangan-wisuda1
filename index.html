@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html class="light scroll-smooth" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Zirahmi Hayati - Graduation Invitation</title>
+    <!-- Inline Theme Check to prevent flash -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+            document.documentElement.classList.remove('light');
+        } else {
+            document.documentElement.classList.add('light');
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;family=Be+Vietnam+Pro:wght@100;300;400;500;700&amp;display=swap" rel="stylesheet"/>
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "rgb(var(--surface-container) / <alpha-value>)",
+                        "tertiary-fixed-dim": "rgb(var(--tertiary-fixed-dim) / <alpha-value>)",
+                        "surface-variant": "rgb(var(--surface-variant) / <alpha-value>)",
+                        "on-background": "rgb(var(--on-background) / <alpha-value>)",
+                        "surface-container-lowest": "rgb(var(--surface-container-lowest) / <alpha-value>)",
+                        "primary": "rgb(var(--primary) / <alpha-value>)",
+                        "outline": "rgb(var(--outline) / <alpha-value>)",
+                        "tertiary": "rgb(var(--tertiary) / <alpha-value>)",
+                        "surface-bright": "rgb(var(--surface-bright) / <alpha-value>)",
+                        "secondary-fixed-dim": "rgb(var(--secondary-fixed-dim) / <alpha-value>)",
+                        "primary-container": "rgb(var(--primary-container) / <alpha-value>)",
+                        "outline-variant": "rgb(var(--outline-variant) / <alpha-value>)",
+                        "surface-container-highest": "rgb(var(--surface-container-highest) / <alpha-value>)",
+                        "surface": "rgb(var(--surface) / <alpha-value>)",
+                        "tertiary-container": "rgb(var(--tertiary-container) / <alpha-value>)",
+                        "on-tertiary-fixed": "rgb(var(--on-tertiary-fixed) / <alpha-value>)",
+                        "error": "rgb(var(--error) / <alpha-value>)",
+                        "on-secondary-container": "rgb(var(--on-secondary-container) / <alpha-value>)",
+                        "surface-dim": "rgb(var(--surface-dim) / <alpha-value>)",
+                        "on-error-container": "rgb(var(--on-error-container) / <alpha-value>)",
+                        "surface-container-high": "rgb(var(--surface-container-high) / <alpha-value>)",
+                        "secondary": "rgb(var(--secondary) / <alpha-value>)",
+                        "on-tertiary-fixed-variant": "rgb(var(--on-tertiary-fixed-variant) / <alpha-value>)",
+                        "on-error": "rgb(var(--on-error) / <alpha-value>)",
+                        "error-container": "rgb(var(--error-container) / <alpha-value>)",
+                        "secondary-container": "rgb(var(--secondary-container) / <alpha-value>)",
+                        "on-primary": "rgb(var(--on-primary) / <alpha-value>)",
+                        "on-surface": "rgb(var(--on-surface) / <alpha-value>)",
+                        "on-primary-fixed-variant": "rgb(var(--on-primary-fixed-variant) / <alpha-value>)",
+                        "inverse-primary": "rgb(var(--inverse-primary) / <alpha-value>)",
+                        "surface-tint": "rgb(var(--surface-tint) / <alpha-value>)",
+                        "on-tertiary": "rgb(var(--on-tertiary) / <alpha-value>)",
+                        "on-secondary-fixed-variant": "rgb(var(--on-secondary-fixed-variant) / <alpha-value>)",
+                        "on-tertiary-container": "rgb(var(--on-tertiary-container) / <alpha-value>)",
+                        "primary-fixed-dim": "rgb(var(--primary-fixed-dim) / <alpha-value>)",
+                        "on-secondary-fixed": "rgb(var(--on-secondary-fixed) / <alpha-value>)",
+                        "secondary-fixed": "rgb(var(--secondary-fixed) / <alpha-value>)",
+                        "inverse-surface": "rgb(var(--inverse-surface) / <alpha-value>)",
+                        "inverse-on-surface": "rgb(var(--inverse-on-surface) / <alpha-value>)",
+                        "primary-fixed": "rgb(var(--primary-fixed) / <alpha-value>)",
+                        "on-surface-variant": "rgb(var(--on-surface-variant) / <alpha-value>)",
+                        "background": "rgb(var(--background) / <alpha-value>)",
+                        "tertiary-fixed": "rgb(var(--tertiary-fixed) / <alpha-value>)",
+                        "on-secondary": "rgb(var(--on-secondary) / <alpha-value>)",
+                        "on-primary-fixed": "rgb(var(--on-primary-fixed) / <alpha-value>)",
+                        "surface-container-low": "rgb(var(--surface-container-low) / <alpha-value>)",
+                        "on-primary-container": "rgb(var(--on-primary-container) / <alpha-value>)"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding-mobile": "24px",
+                        "unit": "8px",
+                        "section-margin": "48px",
+                        "container-padding-desktop": "64px",
+                        "element-gap": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Be Vietnam Pro"],
+                        "display-lg": ["Quicksand"],
+                        "display-lg-mobile": ["Quicksand"],
+                        "headline-md": ["Quicksand"],
+                        "label-md": ["Quicksand"],
+                        "body-md": ["Be Vietnam Pro"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        :root {
+            --primary: 134 77 97;
+            --on-primary: 255 255 255;
+            --primary-container: 255 183 206;
+            --on-primary-container: 123 68 88;
+            --primary-fixed: 255 217 227;
+            --primary-fixed-dim: 250 179 202;
+            --on-primary-fixed: 54 11 30;
+            --on-primary-fixed-variant: 106 54 74;
+            --inverse-primary: 250 179 202;
+
+            --secondary: 97 94 84;
+            --on-secondary: 255 255 255;
+            --secondary-container: 232 226 213;
+            --on-secondary-container: 103 100 90;
+            --secondary-fixed: 232 226 213;
+            --secondary-fixed-dim: 203 198 186;
+            --on-secondary-fixed: 29 28 20;
+            --on-secondary-fixed-variant: 73 71 62;
+
+            --tertiary: 169 49 80;
+            --on-tertiary: 255 255 255;
+            --tertiary-container: 255 184 194;
+            --on-tertiary-container: 157 39 71;
+            --tertiary-fixed: 255 217 221;
+            --tertiary-fixed-dim: 255 178 189;
+            --on-tertiary-fixed: 64 0 20;
+            --on-tertiary-fixed-variant: 137 23 57;
+
+            --error: 186 26 26;
+            --on-error: 255 255 255;
+            --error-container: 255 218 214;
+            --on-error-container: 147 0 10;
+
+            --background: 255 247 249;
+            --on-background: 33 25 30;
+
+            --surface: 255 247 249;
+            --on-surface: 33 25 30;
+            --surface-variant: 238 222 230;
+            --on-surface-variant: 81 67 71;
+            --inverse-surface: 55 46 51;
+            --inverse-on-surface: 253 237 244;
+            --surface-tint: 134 77 97;
+
+            --surface-dim: 229 214 221;
+            --surface-bright: 255 247 249;
+            --surface-container-lowest: 255 255 255;
+            --surface-container-low: 255 240 246;
+            --surface-container: 250 234 241;
+            --surface-container-high: 244 228 235;
+            --surface-container-highest: 238 222 230;
+
+            --outline: 131 115 119;
+            --outline-variant: 213 194 198;
+            --stipple-color: 255 217 227;
+        }
+
+        .dark {
+            --primary: 250 179 202;
+            --on-primary: 54 11 30;
+            --primary-container: 106 54 74;
+            --on-primary-container: 255 217 227;
+            --primary-fixed: 255 217 227;
+            --primary-fixed-dim: 250 179 202;
+            --on-primary-fixed: 54 11 30;
+            --on-primary-fixed-variant: 106 54 74;
+            --inverse-primary: 134 77 97;
+
+            --secondary: 203 198 186;
+            --on-secondary: 50 48 40;
+            --secondary-container: 73 71 62;
+            --on-secondary-container: 232 226 213;
+            --secondary-fixed: 232 226 213;
+            --secondary-fixed-dim: 203 198 186;
+            --on-secondary-fixed: 29 28 20;
+            --on-secondary-fixed-variant: 73 71 62;
+
+            --tertiary: 255 184 194;
+            --on-tertiary: 104 0 38;
+            --tertiary-container: 137 23 57;
+            --on-tertiary-container: 255 217 221;
+            --tertiary-fixed: 255 217 221;
+            --tertiary-fixed-dim: 255 178 189;
+            --on-tertiary-fixed: 64 0 20;
+            --on-tertiary-fixed-variant: 137 23 57;
+
+            --error: 255 180 171;
+            --on-error: 105 0 5;
+            --error-container: 147 0 10;
+            --on-error-container: 255 218 214;
+
+            --background: 25 17 20;
+            --on-background: 238 222 227;
+
+            --surface: 25 17 20;
+            --on-surface: 238 222 227;
+            --surface-variant: 81 67 71;
+            --on-surface-variant: 213 194 198;
+            --inverse-surface: 238 222 227;
+            --inverse-on-surface: 33 25 30;
+            --surface-tint: 250 179 202;
+
+            --surface-dim: 25 17 20;
+            --surface-bright: 64 54 57;
+            --surface-container-lowest: 19 12 15;
+            --surface-container-low: 33 25 29;
+            --surface-container: 37 29 32;
+            --surface-container-high: 48 39 42;
+            --surface-container-highest: 59 50 53;
+
+            --outline: 156 140 145;
+            --outline-variant: 81 67 71;
+            --stipple-color: 48 39 42;
+        }
+
+        .floating-anim {
+            animation: floating 4s ease-in-out infinite;
+        }
+        .floating-anim-slow {
+            animation: floating-delayed 6s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+        @keyframes floating-delayed {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(15px) rotate(-5deg); }
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: background 0.3s ease, border 0.3s ease;
+        }
+        .dark .glass-card {
+            background: rgba(25, 17, 20, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .bg-soft-gradient {
+            background: radial-gradient(circle at top left, rgb(var(--background)) 0%, rgb(var(--surface-container)) 50%, rgb(var(--background)) 100%);
+        }
+        .stipple-bg {
+            background-image: radial-gradient(rgb(var(--stipple-color)) 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+        .photo-frame {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .photo-frame:hover {
+            transform: scale(1.03) rotate(-1deg);
+        }
+        body {
+            background-color: rgb(var(--background));
+            min-height: 100vh;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgb(var(--primary));
+            border-radius: 10px;
+        }
+        .active-nav {
+            color: rgb(var(--primary)) !important;
+            font-weight: 700 !important;
+        }
+        .active-bottom-nav {
+            background-color: rgb(var(--primary-container)) !important;
+            color: rgb(var(--on-primary-container)) !important;
+            padding: 6px 20px;
+            transform: scale(1.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+.hover-scale {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(134, 77, 97, 0.12);
+}
+
+/* Hide Scrollbar */
+html, body {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE & Edge */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+}
+
+/* Hide Scrollbar */
+html, body,
+#cover-overlay {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+#cover-overlay::-webkit-scrollbar {
+    display: none;
+}
+
+
+    </style>
+</head>
+<body class="text-on-background font-body-md overflow-x-hidden stipple-bg">
+
+   <!-- Background Music Player -->
+<audio id="bg-music" loop src="audio/musik.mp3"></audio>
+
+    <!-- Floating Music Toggle Button -->
+    <button id="music-toggle" class="fixed top-24 right-6 w-12 h-12 bg-white/80 backdrop-blur-md border border-primary/20 text-primary rounded-full shadow-lg flex items-center justify-center z-40 active:scale-95 transition-all hidden">
+        <span class="material-symbols-outlined text-2xl animate-spin" id="music-icon" style="animation-duration: 4s;">music_note</span>
+    </button>
+
+    <!-- Cover Overlay -->
+    <div id="cover-overlay" class="fixed inset-0 bg-soft-gradient z-[100] flex flex-col items-center justify-center overflow-y-auto px-container-padding-mobile py-12 transition-all duration-1000">
+        <div class="absolute top-20 left-10 text-primary-container/40 floating-anim">
+            <span class="material-symbols-outlined text-6xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+        </div>
+        <div class="absolute bottom-20 right-10 text-tertiary-container/30 floating-anim-slow">
+            <span class="material-symbols-outlined text-8xl" style="font-variation-settings: 'FILL' 1;">grade</span>
+        </div>
+        
+        <div class="max-w-2xl w-full flex flex-col items-center text-center">
+            <div class="relative w-64 h-64 md:w-80 md:h-80 mb-8 flex items-center justify-center">
+                <div class="absolute inset-0 bg-primary-container/20 rounded-full blur-3xl animate-pulse"></div>
+                <img alt="Graduation Hat" class="w-full h-full object-contain floating-anim drop-shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcU8nXIeKq48PYnAwC31f7BxUIDH7IlLTplHfI0r0-9W8wZ_tieye6QHILkLUro--UeCu1VSw-UJdqJnCNG_j4xPS0gugrVxD6dBb0Us1ApYd_WSO3VCWaRZcOdPTzsfMdJ1InYc-BhzhZWiJ_6kXaZuPgNl8pxFobHpamXExsJ04PHvTjAwLVWoSa91xDD38ROtYUdDqVQM_GhbpmO0yFAt7SeM9o-M9dhwyv8xfcByLvHJNMlgXpa42vv_OMR6ME7dDMI_rf3fTJ"/>
+            </div>
+            
+            <h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary mb-4">
+                Graduation Celebration
+            </h1>
+            
+            <div class="glass-card p-6 md:p-10 rounded-lg w-full mb-10 shadow-[0_20px_40px_rgba(134,77,97,0.12)]">
+                <p class="text-outline font-label-md tracking-widest mb-4 uppercase">Kepada Yth.</p>
+                <div class="relative">
+                    <div class="h-[2px] w-12 bg-primary-container mx-auto mb-6"></div>
+                    <h2 class="font-headline-md text-headline-md text-on-surface mb-2" id="cover-guest-name"></h2>
+                    <div class="h-[2px] w-12 bg-primary-container mx-auto mt-6"></div>
+                </div>
+                <p class="mt-8 font-body-md text-on-surface-variant max-w-md mx-auto">
+                    saya mengundang Anda untuk bergabung dalam momen kebahagiaan perayaan kelulusan kami.
+                </p>
+            </div>
+            
+            <button class="group relative px-10 py-5 bg-primary text-on-primary rounded-full font-label-md flex items-center gap-3 shadow-[0_10px_25px_rgba(134,77,97,0.3)] hover:scale-105 active:scale-95 transition-all duration-300" id="openInvitation">
+                <span class="material-symbols-outlined text-2xl group-hover:rotate-12 transition-transform" style="font-variation-settings: 'FILL' 1;">mail</span>
+                BUKA UNDANGAN
+                <div class="absolute -inset-1 bg-primary/20 rounded-full blur-lg group-hover:opacity-100 opacity-0 transition-opacity"></div>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content Container (Locked initially) -->
+    <div id="main-content" class="opacity-0 transition-opacity duration-1000">
+        <!-- Top Navigation Bar -->
+        <header class="bg-surface/60 dark:bg-surface-dim/60 backdrop-blur-xl text-primary font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg docked full-width top-0 sticky shadow-[0_10px_20px_rgba(134,77,97,0.05)] flex justify-between items-center px-container-padding-mobile md:px-container-padding-desktop h-20 w-full z-50">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-3xl">school</span>
+                <span class="font-display-lg-mobile">Undangan</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-label-md" id="desktop-menu">
+                <a class="text-outline hover:text-primary transition-colors duration-200 active-nav" href="#beranda">Beranda</a>
+                <a class="text-outline hover:text-primary transition-colors duration-200" href="#detail">Detail</a>
+                <a class="text-outline hover:text-primary transition-colors duration-200" href="#galeri">Galeri</a>
+                <a class="text-outline hover:text-primary transition-colors duration-200" href="#rsvp">RSVP</a>
+            </div>
+            <button class="material-symbols-outlined text-2xl active:scale-95 transition-transform" id="theme-button">star</button>
+        </header>
+
+        <!-- Floating Decorations -->
+        <div class="decorative-element top-32 left-[10%] text-primary/30 floating-anim fixed" style="font-size: 40px; pointer-events: none;">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+        </div>
+        <div class="decorative-element top-64 right-[15%] text-primary-fixed-dim floating-anim-slow fixed" style="font-size: 32px; pointer-events: none;">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">school</span>
+        </div>
+        <div class="decorative-element bottom-48 left-[15%] text-tertiary/20 floating-anim fixed" style="font-size: 24px; pointer-events: none;">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+        </div>
+
+        <!-- Section 1: Beranda -->
+        <section id="beranda" class="min-h-screen pt-24 pb-12 flex flex-col items-center justify-center px-container-padding-mobile md:px-container-padding-desktop max-w-screen-xl mx-auto">
+            <div class="flex flex-col items-center text-center relative w-full">
+                <!-- Image Container with Glassmorphism -->
+                <div class="relative w-64 h-64 md:w-80 md:h-80 mb-8 z-20">
+                    <div class="absolute inset-0 bg-primary-container/30 rounded-full blur-3xl animate-pulse"></div>
+                    <div class="relative w-full h-full rounded-full border-8 border-white shadow-xl overflow-hidden glass-card">
+                        <img alt="Female Graduate" class="w-full h-full object-cover" src="gambar/foto.jpeg"/>
+                    </div>
+                    <!-- Close Floating Icons -->
+                    <div class="absolute -top-4 -right-4 bg-white p-3 rounded-full shadow-lg floating-anim text-primary">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                    </div>
+                    <div class="absolute bottom-4 -left-4 bg-white p-3 rounded-full shadow-lg floating-anim-slow text-tertiary">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">heart_plus</span>
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="space-y-4">
+                    <span class="inline-block px-4 py-1 rounded-full bg-tertiary text-on-tertiary font-label-md text-label-md tracking-wider">
+                        CLASS OF 2026
+                    </span>
+                    <h2 class="font-display-lg-mobile md:text-display-lg md:font-display-lg text-on-surface">
+                        Zirahmi Hayati
+                    </h2>
+                    <p class="font-headline-md text-headline-md text-primary italic">
+                        "Yay! Akhirnya Lulus!"
+                    </p>
+                </div>
+
+                <!-- Countdown Timer -->
+                <div class="mt-8">
+                    <div class="inline-flex items-center gap-4 bg-primary-fixed text-on-primary-fixed px-8 py-3 rounded-full shadow-[0_10px_20px_-5px_rgba(134,77,97,0.2)] font-label-md text-label-md">
+                        <span class="material-symbols-outlined">timer</span>
+                        <div class="flex gap-4" id="countdown">
+                            <span id="days">00d</span>
+                            <span id="hours">00h</span>
+                            <span id="minutes">00m</span>
+                            <span id="seconds">00s</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="mt-12 flex flex-col md:flex-row gap-4 w-full justify-center items-center">
+                    <a href="#rsvp" class="w-full md:w-auto px-10 py-4 bg-primary text-on-primary rounded-full font-label-md text-label-md shadow-lg transition-all hover:bg-primary/90 hover:scale-105 active:scale-95 flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined">send</span>
+                        RSVP Sekarang
+                    </a>
+                    <a href="#detail" class="w-full md:w-auto px-10 py-4 border-2 border-tertiary text-tertiary rounded-full font-label-md text-label-md transition-all hover:bg-tertiary/5 hover:scale-105 active:scale-95 flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined">calendar_month</span>
+                        Lihat Jadwal
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-t border-outline-variant/30 max-w-5xl mx-auto"/>
+
+        <!-- Section 2: Detail Acara -->
+        <section id="detail" class="min-h-screen py-24 px-container-padding-mobile md:px-container-padding-desktop max-w-[1200px] mx-auto relative">
+            <!-- Hero Section Detail -->
+            <div class="text-center mb-16">
+                <div class="inline-block px-6 py-2 bg-primary-container text-on-primary-container rounded-full font-label-md mb-4 shadow-sm">
+                    GRADUATION CEREMONY
+                </div>
+                <h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-4">Gimana???</h2>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                    besok kita pergi makan yaaa
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Information Cards -->
+                <div class="lg:col-span-5 flex flex-col gap-6">
+<!-- Date & Time Card NEW -->
+<div class="glass-card p-8 rounded-3xl hover:scale-[1.02] transition-all duration-300 shadow-[0_12px_40px_rgba(134,77,97,0.08)]">
+    
+    <div class="flex flex-col md:flex-row md:items-start gap-6">
+
+        <!-- Icon -->
+        <div class="w-14 h-14 bg-primary-container flex items-center justify-center rounded-full shrink-0 shadow-lg shadow-primary/20">
+            <span class="material-symbols-outlined text-white text-3xl">
+                calendar_today
+            </span>
+        </div>
+
+        <!-- Content -->
+        <div class="flex-1">
+
+            <h3 class="font-quicksand text-3xl font-bold text-primary mb-1">
+                Waktu &amp; Tanggal
+            </h3>
+
+            <p class="font-vietnam text-secondary mb-8">
+                Catat tanggal istimewanya
+            </p>
+
+            <div class="grid grid-cols-1 gap-8">
+
+                <!-- Tanggal -->
+                <div class="space-y-1">
+                    <p class="text-outline uppercase tracking-widest text-[10px] font-semibold">
+                        HARI &amp; TANGGAL
+                    </p>
+
+                    <p class="font-vietnam text-lg font-semibold text-on-surface">
+                        Minggu, 25 Agustus 2026
+                    </p>
+                </div>
+
+                <!-- Jam -->
+                <div class="space-y-1">
+                    <p class="text-outline uppercase tracking-widest text-[10px] font-semibold">
+                        JAM ACARA
+                    </p>
+
+                    <p class="font-vietnam text-lg font-semibold text-on-surface">
+                        08:00 - 12:00 WIB
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+                    <!-- Location Card -->
+                    <div class="glass-card p-8 rounded-xl shadow-[0_10px_30px_rgba(134,77,97,0.05)] hover:scale-[1.02] transition-transform duration-300">
+                        <div class="flex items-start gap-4 mb-6">
+                            <div class="w-12 h-12 rounded-full bg-tertiary-container flex items-center justify-center text-on-tertiary-container">
+                                <span class="material-symbols-outlined">location_on</span>
+                            </div>
+                            <div>
+                                <h3 class="font-headline-md text-headline-md text-primary">Lokasi Acara</h3>
+                                <p class="text-on-surface-variant">Gedung Auditorium Utama</p>
+                            </div>
+                        </div>
+                        <div class="rounded-lg overflow-hidden mb-6 h-48 bg-surface-dim relative group">
+                            <img alt="Location" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFVFcn7sHyd-EJREppLrO1aLNmiL6ukQ6ZhioKh7SxT7gbginTzhp0lQCNmb1kJOJy0bPO-nMgG2aDiw_I6g0pGBA8GVboIK0KlxRU77d66fi9qvqbijk3qMqC7fGDa51AnpMkEr2uo_GAiUe1JlJMm1Vt6dGBFEPA_elDFmkWNqgtLw-RhaqkaLF8B_b6dMVlEzCvFEnFtE-554TVyAeyr9yeucqhUWLPz2-KixedsG51uT_X8iVwwyA9PxAzcQFoiH5LSvOJmnWF"/>
+                            <div class="absolute inset-0 bg-primary/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <span class="bg-white px-4 py-2 rounded-full text-primary font-bold shadow-lg">Lihat Foto Lokasi</span>
+                            </div>
+                        </div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Auditorium+Utama+Universitas+Indonesia" target="_blank" class="w-full py-4 bg-primary text-white rounded-full font-label-md flex items-center justify-center gap-2 shadow-[0_10px_20px_rgba(134,77,97,0.2)] active:scale-95 transition-all hover:bg-on-primary-fixed-variant">
+                            <span class="material-symbols-outlined">map</span>
+                            LIHAT PETA KE LOKASI
+                        </a>
+                    </div>
+                </div>
+
+ <!-- Schedule Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+<!-- Day 1 -->
+<div class="glass-card rounded-xl p-8 md:p-10 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -mr-10 -mt-10"></div>
+<div class="flex items-baseline gap-4 mb-10">
+<h3 class="text-headline-md text-primary">Minggu</h3>
+<p class="text-label-md text-secondary tracking-wide uppercase">21 Juni 2026</p>
+</div>
+<div class="space-y-8 relative timeline-line">
+<!-- Item 1.1 -->
+<div class="photo-frame flex gap-6 p-4 rounded-lg items-start relative z-10">
+<div class="w-10 h-10 rounded-full glass-card border-primary/20 flex items-center justify-center flex-shrink-0 text-primary">
+<span class="material-symbols-outlined" style="font-size: 20px;">restaurant</span>
+</div>
+<div>
+<span class="text-label-sm text-on-secondary-fixed-variant bg-secondary-container px-2 py-0.5 rounded-sm block w-fit mb-2">10:00 - 16:00</span>
+<h4 class="text-headline-md text-on-surface mb-1">Jamuan Di Posko Lulusan</h4>
+<p class="text-body-md text-on-surface-variant">Menyambut kehadiran keluarga dan tamu kehormatan.</p>
+</div>
+</div>
+<!-- Item 1.2 -->
+<div class="photo-frame flex gap-6 p-4 rounded-lg items-start relative z-10">
+<div class="w-10 h-10 rounded-full glass-card border-primary/20 flex items-center justify-center flex-shrink-0 text-primary">
+<span class="material-symbols-outlined" style="font-size: 20px;">family_history</span>
+</div>
+<div>
+<span class="text-label-sm text-on-secondary-fixed-variant bg-secondary-container px-2 py-0.5 rounded-sm block w-fit mb-2">16:00 - 18:00</span>
+<h4 class="text-headline-md text-on-surface mb-1">Doa Akikah Bersama</h4>
+<p class="text-body-md text-on-surface-variant">Momen sakral penuh doa untuk keberkahan masa depan.</p>
+</div>
+</div>
+<!-- Item 1.3 -->
+<div class="photo-frame flex gap-6 p-4 rounded-lg items-start relative z-10">
+<div class="w-10 h-10 rounded-full glass-card border-primary/20 flex items-center justify-center flex-shrink-0 text-primary">
+<span class="material-symbols-outlined" style="font-size: 20px;">workspace_premium</span>
+</div>
+<div>
+<span class="text-label-sm text-on-secondary-fixed-variant bg-secondary-container px-2 py-0.5 rounded-sm block w-fit mb-2">20:00 - Selesai</span>
+<h4 class="text-headline-md text-on-surface mb-1">Pengukuhan Gelar</h4>
+<p class="text-body-md text-on-surface-variant">Malam seremoni pengukuhan dan pemberian ucapan selamat.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Day 2 -->
+<div class="glass-card rounded-xl p-8 md:p-10 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -mr-10 -mt-10"></div>
+<div class="flex items-baseline gap-4 mb-10">
+<h3 class="text-headline-md text-primary">Senin</h3>
+<p class="text-label-md text-secondary tracking-wide uppercase">22 Juni 2026</p>
+</div>
+<div class="space-y-8 relative timeline-line">
+<!-- Item 2.1 -->
+<div class="photo-frame flex gap-6 p-4 rounded-lg items-start relative z-10">
+<div class="w-10 h-10 rounded-full glass-card border-primary/20 flex items-center justify-center flex-shrink-0 text-primary">
+<span class="material-symbols-outlined" style="font-size: 20px;">groups</span>
+</div>
+<div>
+<span class="text-label-sm text-on-secondary-fixed-variant bg-secondary-container px-2 py-0.5 rounded-sm block w-fit mb-2">07:00 - 08:00</span>
+<h4 class="text-headline-md text-on-surface mb-1">Arak Arak Batambua Lulusan</h4>
+<p class="text-body-md text-on-surface-variant">Pawai tradisional mengarak lulusan mengelilingi kawasan.</p>
+</div>
+</div>
+<!-- Item 2.2 -->
+<div class="photo-frame flex gap-6 p-4 rounded-lg items-start relative z-10">
+<div class="w-10 h-10 rounded-full glass-card border-primary/20 flex items-center justify-center flex-shrink-0 text-primary">
+<span class="material-symbols-outlined" style="font-size: 20px;">card_membership</span>
+</div>
+<div>
+<span class="text-label-sm text-on-secondary-fixed-variant bg-secondary-container px-2 py-0.5 rounded-sm block w-fit mb-2">08:00 - 12:30</span>
+<h4 class="text-headline-md text-on-surface mb-1">Pemberian Ijazah</h4>
+<p class="text-body-md text-on-surface-variant">Puncak acara pemberian dokumen kelulusan secara formal.</p>
+</div>
+</div>
+<!-- Item 2.3 -->
+<div class="photo-frame flex gap-6 p-4 rounded-lg items-start relative z-10">
+<div class="w-10 h-10 rounded-full glass-card border-primary/20 flex items-center justify-center flex-shrink-0 text-primary">
+<span class="material-symbols-outlined" style="font-size: 20px;">campaign</span>
+</div>
+<div>
+<span class="text-label-sm text-on-secondary-fixed-variant bg-secondary-container px-2 py-0.5 rounded-sm block w-fit mb-2">16:00 - 18:00</span>
+<h4 class="text-headline-md text-on-surface mb-1">Pawai Ta'aruf</h4>
+<p class="text-body-md text-on-surface-variant">Ajang silaturahmi bersama masyarakat luas.</p>
+</div>
+</div>
+<!-- Item 2.4 -->
+<div class="photo-frame flex gap-6 p-4 rounded-lg items-start relative z-10">
+<div class="w-10 h-10 rounded-full glass-card border-primary/20 flex items-center justify-center flex-shrink-0 text-primary">
+<span class="material-symbols-outlined" style="font-size: 20px;">music_note</span>
+</div>
+<div>
+<span class="text-label-sm text-on-secondary-fixed-variant bg-secondary-container px-2 py-0.5 rounded-sm block w-fit mb-2">20:00 - Selesai</span>
+<h4 class="text-headline-md text-on-surface mb-1">Sholawat Dulang &amp; Lelang</h4>
+<p class="text-body-md text-on-surface-variant">Penutupan malam seni dan penggalangan dana sosial.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+        <!-- Section 3: Galeri -->
+        <section id="galeri" class="min-h-screen py-24 px-container-padding-mobile md:px-container-padding-desktop max-w-7xl mx-auto relative">
+            <div class="text-center max-w-4xl mx-auto mb-16">
+                <div class="inline-block bg-tertiary text-white px-6 py-2 rounded-full font-label-md text-label-md mb-6 shadow-lg shadow-primary/20">
+                    CLASS OF 2026
+                </div>
+                <h2 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary mb-4">
+                    Petualangan &amp; Memori Indah
+                </h2>
+                <p class="font-body-lg text-body-lg text-on-surface-variant">
+                    Gatau kan Kita se asik apa? 
+                </p>
+            </div>
+
+            <!-- Bento Box Kenangan -->
+            <div class="glass-card rounded-lg p-8 md:p-12 flex flex-col md:flex-row items-center gap-12 max-w-6xl mx-auto mb-16">
+                <div class="w-full md:w-1/2 relative">
+                    <div class="photo-frame bg-white p-4 shadow-xl rotate-3 relative z-20">
+                        <img alt="Memories" class="w-full aspect-[4/3] object-cover rounded" src="gambar/bestie-kenangan.jpeg"/>
+                        <span class="absolute -top-6 -right-6 material-symbols-outlined text-primary text-5xl floating-anim" style="font-variation-settings: 'FILL' 1;">school</span>
+                    </div>
+                    <div class="absolute inset-0 bg-primary-container/20 rounded-lg -rotate-3 z-10"></div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h3 class="font-headline-md text-display-lg-mobile text-primary mb-4">Nostalgia &amp; Kenangan</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed italic">
+                        inget ngga ini waktu acara adik adik santri baru? siapa yang nangis hayoo jujur
+                    </p>
+                    <div class="mt-6 flex gap-2">
+                        <span class="bg-primary-fixed text-on-primary-fixed-variant px-4 py-1 rounded-full font-label-md text-label-md">#BestClass</span>
+                        <span class="bg-primary-fixed text-on-primary-fixed-variant px-4 py-1 rounded-full font-label-md text-label-md">#2026</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bento Grid Photos -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8" id="bento-gallery-grid">
+                <!-- Large Item -->
+                <div class="md:col-span-8 group">
+                    <div class="glass-card rounded-lg p-3 h-full photo-frame overflow-hidden relative" data-photo-id="photo_celebration">
+                        <div class="relative overflow-hidden rounded-lg">
+                            <img alt="Celebration" class="w-full h-80 md:h-[500px] object-cover group-hover:scale-110 transition-transform duration-700" src="gambar/detik-kelulusan.jpeg"/>
+                            <!-- Like Badge -->
+                            <button class="absolute bottom-3 right-3 flex items-center gap-1 bg-white/90 dark:bg-black/75 backdrop-blur-md px-3 py-1.5 rounded-full shadow-md z-30 transition-all select-none hover:scale-105 active:scale-95 group/btn photo-like-btn animate-pulse" data-photo-id="photo_celebration">
+                                <span class="material-symbols-outlined text-[16px] text-outline group-hover/btn:text-tertiary transition-colors" style="font-variation-settings: 'FILL' 0;">favorite</span>
+                                <span class="photo-likes-count text-xs font-semibold text-on-surface">128</span>
+                            </button>
+                        </div>
+                        <div class="absolute top-6 left-6 flex gap-2">
+                            <span class="material-symbols-outlined text-white bg-tertiary p-2 rounded-full shadow-lg floating-anim">star</span>
+                        </div>
+                        <div class="mt-4 px-4 pb-4">
+                            <h3 class="font-headline-md text-headline-md text-primary">Detik-Detik Kelulusan!</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant italic">arak-arakan, hati tenang, dompet... ah sudahlah.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Small Vertical Item -->
+                <div class="md:col-span-4 group">
+                    <div class="glass-card rounded-lg p-3 h-full photo-frame relative" data-photo-id="photo_besties">
+                        <div class="relative overflow-hidden rounded-lg">
+                            <img alt="Besties" class="w-full h-[400px] md:h-[540px] object-cover group-hover:scale-110 transition-transform duration-700" src="gambar/bestie.jpeg"/>
+                            <!-- Like Badge -->
+                            <button class="absolute bottom-3 right-3 flex items-center gap-1 bg-white/90 dark:bg-black/75 backdrop-blur-md px-3 py-1.5 rounded-full shadow-md z-30 transition-all select-none hover:scale-105 active:scale-95 group/btn photo-like-btn" data-photo-id="photo_besties">
+                                <span class="material-symbols-outlined text-[16px] text-outline group-hover/btn:text-tertiary transition-colors" style="font-variation-settings: 'FILL' 0;">favorite</span>
+                                <span class="photo-likes-count text-xs font-semibold text-on-surface">95</span>
+                            </button>
+                        </div>
+                        <span class="absolute -bottom-4 -left-4 material-symbols-outlined text-primary-container text-6xl z-20" style="font-variation-settings: 'FILL' 1;">favorite</span>
+                        <div class="mt-4 px-4 pb-4">
+                            <h3 class="font-headline-md text-headline-md text-primary">Bestie for Life</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant italic">Tim sukses makalah (dan tim tukang gibah).</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Square Items Row -->
+                <div class="md:col-span-4 group">
+                    <div class="glass-card rounded-lg p-3 photo-frame relative" data-photo-id="photo_library">
+                        <div class="relative overflow-hidden rounded-lg">
+                            <img alt="Books" class="w-full aspect-square object-cover group-hover:scale-110 transition-transform duration-700" src="gambar/rumah.jpeg"/>
+                            <!-- Like Badge -->
+                            <button class="absolute bottom-3 right-3 flex items-center gap-1 bg-white/90 dark:bg-black/75 backdrop-blur-md px-3 py-1.5 rounded-full shadow-md z-30 transition-all select-none hover:scale-105 active:scale-95 group/btn photo-like-btn" data-photo-id="photo_library">
+                                <span class="material-symbols-outlined text-[16px] text-outline group-hover/btn:text-tertiary transition-colors" style="font-variation-settings: 'FILL' 0;">favorite</span>
+                                <span class="photo-likes-count text-xs font-semibold text-on-surface">64</span>
+                            </button>
+                        </div>
+                        <span class="absolute top-2 right-2 material-symbols-outlined text-tertiary-container text-4xl floating-anim" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                        <div class="mt-4 px-4 pb-4 text-center">
+                            <p class="font-body-md text-body-md text-on-surface-variant italic">Rumah kedua</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-4 group">
+                    <div class="glass-card rounded-lg p-3 photo-frame relative" data-photo-id="photo_flowers">
+                        <div class="relative overflow-hidden rounded-lg">
+                            <img alt="Flowers" class="w-full aspect-square object-cover group-hover:scale-110 transition-transform duration-700" src="gambar/bunga.jpeg"/>
+                            <!-- Like Badge -->
+                            <button class="absolute bottom-3 right-3 flex items-center gap-1 bg-white/90 dark:bg-black/75 backdrop-blur-md px-3 py-1.5 rounded-full shadow-md z-30 transition-all select-none hover:scale-105 active:scale-95 group/btn photo-like-btn" data-photo-id="photo_flowers">
+                                <span class="material-symbols-outlined text-[16px] text-outline group-hover/btn:text-tertiary transition-colors" style="font-variation-settings: 'FILL' 0;">favorite</span>
+                                <span class="photo-likes-count text-xs font-semibold text-on-surface">87</span>
+                            </button>
+                        </div>
+                        <div class="mt-4 px-4 pb-4 text-center">
+                            <p class="font-body-md text-body-md text-on-surface-variant italic">Toko Bunga Berjalan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-4 group">
+                    <div class="glass-card rounded-lg p-3 photo-frame relative overflow-hidden" data-photo-id="photo_candid">
+                        <div class="relative overflow-hidden rounded-lg">
+                            <img alt="Nap" class="w-full aspect-square object-cover group-hover:scale-110 transition-transform duration-700" src="gambar/lucu.jpeg"/>
+                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-primary/20 backdrop-blur-sm z-10">
+                                <span class="text-white font-headline-md">Sstt... lagi ngantuk!</span>
+                            </div>
+                            <!-- Like Badge -->
+                            <button class="absolute bottom-3 right-3 flex items-center gap-1 bg-white/90 dark:bg-black/75 backdrop-blur-md px-3 py-1.5 rounded-full shadow-md z-30 transition-all select-none hover:scale-105 active:scale-95 group/btn photo-like-btn" data-photo-id="photo_candid">
+                                <span class="material-symbols-outlined text-[16px] text-outline group-hover/btn:text-tertiary transition-colors" style="font-variation-settings: 'FILL' 0;">favorite</span>
+                                <span class="photo-likes-count text-xs font-semibold text-on-surface">42</span>
+                            </button>
+                        </div>
+                        <div class="mt-4 px-4 pb-4 text-center">
+                            <p class="font-body-md text-body-md text-on-surface-variant italic">Candid paling estetik (bohong)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom Uploaded Photos Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8" id="custom-photos-grid">
+                <!-- Custom uploaded photos go here -->
+            </div>
+
+        </section>
+
+        <hr class="border-t border-outline-variant/30 max-w-5xl mx-auto"/>
+
+<!-- Tambahkan di sini -->
+<div class="mt-6 text-center">
+    <p class="inline-block px-6 py-3 rounded-full bg-primary-container/40 text-primary font-quicksand text-lg italic shadow-sm">
+        jangan lupa datang ya ✨
+    </p>
+</div>
+
+</div>
+</section>
+
+       
+
+        <!-- Floating Action Button (FAB) for Comments -->
+        <button class="fixed bottom-24 right-6 w-14 h-14 bg-tertiary text-white rounded-full shadow-lg flex items-center justify-center z-40 floating-anim active:scale-90 transition-all" id="fab-comment">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_comment</span>
+        </button>
+
+        <!-- Padding for bottom nav on mobile -->
+        <div class="h-24 md:hidden"></div>
+    </div>
+
+    <!-- Script Section -->
+    <script>
+        // Check query parameters for guest name
+        const params = new URLSearchParams(window.location.search);
+        const name = params.get('to');
+        if (name) {
+            const guestSlot = document.getElementById('cover-guest-name');
+            if (guestSlot) guestSlot.textContent = name;
+            
+            const rsvpNameInput = document.querySelector('input[placeholder="Masukkan namamu"]');
+            if (rsvpNameInput) rsvpNameInput.value = name;
+        }
+        </script>
+
+<script type="module">
+const apiEndpoint = "/api/rsvp";
+
+function setRsvpStatus(ok, message) {
+    const alertEl = document.getElementById("firebase-alert");
+    if (!alertEl) return;
+    alertEl.textContent = message;
+    alertEl.classList.toggle("hidden", ok);
+    alertEl.classList.toggle("bg-amber-100", !ok);
+    alertEl.classList.toggle("border", !ok);
+    alertEl.classList.toggle("border-amber-200", !ok);
+    alertEl.classList.toggle("text-amber-800", !ok);
+}
+
+function loadLocalRsvpData() {
+    return JSON.parse(localStorage.getItem("shared_rsvp") || "[]");
+}
+
+function saveLocalRsvpData(entries) {
+    localStorage.setItem("shared_rsvp", JSON.stringify(entries));
+}
+
+function updateGuestbook(entries) {
+    guestbook.innerHTML = "";
+    if (!entries.length) {
+        guestbook.innerHTML = `
+            <div class="glass-card p-6 rounded-lg shadow-sm text-on-surface-variant text-center">
+                Belum ada RSVP masuk. Silakan kirim konfirmasi agar pesan teman-teman muncul di sini.
+            </div>`;
+        return;
+    }
+
+    entries.forEach((data) => {
+        guestbook.innerHTML += `
+            <div class="glass-card p-6 rounded-lg shadow-sm flex flex-col gap-4">
+                <div class="flex items-center justify-between">
+                    <h3 class="font-bold text-primary text-lg">
+                        ${data.nama}
+                    </h3>
+                    <span class="${
+                        data.attendance === "HADIR"
+                            ? "bg-primary-container text-on-primary-container"
+                            : "bg-tertiary-container text-on-tertiary-container"
+                    } text-[10px] font-bold px-3 py-1 rounded-full">
+                        ${data.attendance}
+                    </span>
+                </div>
+                <p class="text-on-surface-variant italic">
+                    "${data.pesan}"
+                </p>
+            </div>`;
+    });
+}
+
+async function loadRsvpEntries() {
+    try {
+        const response = await fetch(apiEndpoint);
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "Gagal memuat RSVP dari server.");
+
+        saveLocalRsvpData(data);
+        setRsvpStatus(true, "Semua RSVP ditampilkan di sini untuk semua tamu.");
+        updateGuestbook(data);
+    } catch (error) {
+        console.error("Neon API error:", error);
+        const localEntries = loadLocalRsvpData();
+        if (localEntries.length) {
+            setRsvpStatus(false, `Menampilkan RSVP lokal sementara Neon API belum tersedia (${error.message}).`);
+            updateGuestbook(localEntries);
+        } else {
+            setRsvpStatus(false, `Tidak dapat memuat RSVP. Pastikan NEON_DATABASE_URL sudah dikonfigurasi (${error.message}).`);
+            updateGuestbook([]);
+        }
+    }
+}
+
+// ======================================
+// RSVP FORM
+// ======================================
+
+
+// ======================================
+// TAMPILKAN RSVP REALTIME
+// ======================================
+
+const guestbook = document.getElementById("guestbook-list");
+const initialLocalEntries = loadLocalRsvpData();
+if (initialLocalEntries.length) {
+    setRsvpStatus(false, "Menampilkan RSVP lokal sementara Neon API dimuat.");
+    updateGuestbook(initialLocalEntries);
+} else {
+    setRsvpStatus(false, "Memuat RSVP... Jika Neon belum aktif, pesan akan disimpan lokal.");
+}
+
+loadRsvpEntries();
+window.apiEndpoint = apiEndpoint;
+window.setRsvpStatus = setRsvpStatus;
+window.loadLocalRsvpData = loadLocalRsvpData;
+window.saveLocalRsvpData = saveLocalRsvpData;
+window.updateGuestbook = updateGuestbook;
+</script>
+
+<script>
+        // Handle Buka Undangan Click
+        document.getElementById('openInvitation').addEventListener('click', function() {
+            const btn = this;
+            btn.innerHTML = `
+                <span class="material-symbols-outlined animate-spin text-2xl">sync</span>
+                MEMBUKA...
+            `;
+            
+            // Audio Initialization (Browser requires user interaction to play audio)
+            const audio = document.getElementById('bg-music');
+            
+            setTimeout(() => {
+                // Fade out cover
+                const cover = document.getElementById('cover-overlay');
+                cover.classList.add('opacity-0', 'pointer-events-none');
+                
+                // Show main content
+                const mainContent = document.getElementById('main-content');
+                mainContent.classList.remove('opacity-0');
+                mainContent.classList.add('opacity-100');
+                
+                // Show music button
+                const musicBtn = document.getElementById('music-toggle');
+                musicBtn.classList.remove('hidden');
+                
+                // Play Music
+                audio.play().then(() => {
+                    document.getElementById('music-icon').classList.add('animate-spin');
+                }).catch(e => {
+                    console.log("Audio play prevented or error: ", e);
+                });
+
+                // Scroll to top of main page
+                window.scrollTo(0, 0);
+            }, 1000);
+        });
+
+        // Music Toggle Logic
+        const musicBtn = document.getElementById('music-toggle');
+        const audio = document.getElementById('bg-music');
+        const musicIcon = document.getElementById('music-icon');
+        
+        musicBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                audio.volume = 0.5;
+                musicIcon.classList.add('animate-spin');
+                musicIcon.textContent = 'music_note';
+            } else {
+                audio.pause();
+                musicIcon.classList.remove('animate-spin');
+                musicIcon.textContent = 'music_off';
+            }
+        });
+
+        // Countdown Timer Logic
+        const targetDate = new Date();
+        targetDate.setDate(targetDate.getDate() + 15); // Target is 15 days from opening
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days + "d";
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0') + "h";
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0') + "m";
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0') + "s";
+
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("countdown").innerHTML = "HARI INI!";
+            }
+        }
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+
+        // Click to spawn sparkles/hearts
+        document.addEventListener('click', (e) => {
+            // Avoid adding effects on interactive elements
+            if (e.target.closest('a') || e.target.closest('button') || e.target.closest('input') || e.target.closest('select') || e.target.closest('textarea')) {
+                return;
+            }
+            const heart = document.createElement('span');
+            heart.className = 'material-symbols-outlined absolute pointer-events-none text-primary/60 transition-all duration-1000 z-[100]';
+            heart.style.left = (e.pageX - 12) + 'px';
+            heart.style.top = (e.pageY - 12) + 'px';
+            heart.style.fontVariationSettings = "'FILL' 1";
+            heart.innerText = 'favorite';
+            heart.style.fontSize = '24px';
+            document.body.appendChild(heart);
+
+            requestAnimationFrame(() => {
+                heart.style.transform = `translate(${(Math.random() - 0.5) * 100}px, -100px) scale(0)`;
+                heart.style.opacity = '0';
+            });
+
+            setTimeout(() => heart.remove(), 1000);
+        });
+
+        // Confetti Effect
+        function confettiEffect() {
+            for(let i = 0; i < 25; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.zIndex = '9999';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = ['#864d61', '#ffb7ce', '#a93150', '#fab3ca'][Math.floor(Math.random() * 4)];
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-10px';
+                confetti.style.borderRadius = '2px';
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                document.body.appendChild(confetti);
+
+                const animation = confetti.animate([
+                    { transform: `translate(0, 0) rotate(0deg)`, opacity: 1 },
+                    { transform: `translate(${(Math.random() - 0.5) * 200}px, 100vh) rotate(${Math.random() * 720}deg)`, opacity: 0 }
+                ], {
+                    duration: 1000 + Math.random() * 2000,
+                    easing: 'cubic-bezier(0, .9, .57, 1)'
+                });
+
+                animation.onfinish = () => confetti.remove();
+            }
+        }
+
+        // ==========================================
+        // PHOTO LIKES & CONTRIBUTION LOGIC
+        // ==========================================
+        const photoLikesBase = {
+            photo_celebration: 128,
+            photo_besties: 95,
+            photo_library: 64,
+            photo_flowers: 87,
+            photo_candid: 42
+        };
+
+        function spawnDblClickHeart(e, frame) {
+            const heart = document.createElement('span');
+            heart.className = 'material-symbols-outlined absolute text-primary text-6xl pointer-events-none z-50';
+            heart.style.fontVariationSettings = "'FILL' 1";
+            heart.innerText = 'favorite';
+            heart.style.left = (e.clientX - frame.getBoundingClientRect().left - 30) + 'px';
+            heart.style.top = (e.clientY - frame.getBoundingClientRect().top - 30) + 'px';
+            
+            frame.appendChild(heart);
+            
+            heart.animate([
+                { transform: 'scale(0) rotate(-20deg)', opacity: 0 },
+                { transform: 'scale(1.5) rotate(0deg)', opacity: 1, offset: 0.5 },
+                { transform: 'scale(1) rotate(20deg)', opacity: 0 }
+            ], {
+                duration: 800,
+                easing: 'ease-out'
+            });
+
+            setTimeout(() => heart.remove(), 800);
+        }
+
+        function toggleLikePhoto(id, btn) {
+            let likedPhotos = JSON.parse(localStorage.getItem('liked_photo_ids') || '[]');
+            let photoLikesOverride = JSON.parse(localStorage.getItem('photo_likes_override') || '{}');
+            
+            const isLiked = likedPhotos.includes(id);
+            const countEl = btn.querySelector('.photo-likes-count');
+            const iconEl = btn.querySelector('.material-symbols-outlined');
+            
+            if (isLiked) {
+                // Unlike
+                likedPhotos = likedPhotos.filter(p => p !== id);
+                photoLikesOverride[id] = Math.max(0, (photoLikesOverride[id] || photoLikesBase[id] || 0) - 1);
+                
+                iconEl.classList.remove('text-tertiary');
+                iconEl.classList.add('text-outline');
+                iconEl.style.fontVariationSettings = "'FILL' 0";
+            } else {
+                // Like
+                likedPhotos.push(id);
+                photoLikesOverride[id] = (photoLikesOverride[id] || photoLikesBase[id] || 0) + 1;
+                
+                iconEl.classList.add('text-tertiary');
+                iconEl.classList.remove('text-outline');
+                iconEl.style.fontVariationSettings = "'FILL' 1";
+                
+                confettiEffect();
+            }
+            
+            countEl.textContent = photoLikesOverride[id];
+            localStorage.setItem('liked_photo_ids', JSON.stringify(likedPhotos));
+            localStorage.setItem('photo_likes_override', JSON.stringify(photoLikesOverride));
+        }
+
+        function initPhotoLikes() {
+            let likedPhotos = JSON.parse(localStorage.getItem('liked_photo_ids') || '[]');
+            let photoLikesOverride = JSON.parse(localStorage.getItem('photo_likes_override') || '{}');
+            
+            document.querySelectorAll('.photo-like-btn').forEach(btn => {
+                const id = btn.dataset.photoId;
+                const countEl = btn.querySelector('.photo-likes-count');
+                const iconEl = btn.querySelector('.material-symbols-outlined');
+                
+                const isLiked = likedPhotos.includes(id);
+                const count = photoLikesOverride[id] !== undefined ? photoLikesOverride[id] : (photoLikesBase[id] || 0);
+                
+                countEl.textContent = count;
+                if (isLiked) {
+                    iconEl.classList.add('text-tertiary');
+                    iconEl.classList.remove('text-outline');
+                    iconEl.style.fontVariationSettings = "'FILL' 1";
+                } else {
+                    iconEl.classList.remove('text-tertiary');
+                    iconEl.classList.add('text-outline');
+                    iconEl.style.fontVariationSettings = "'FILL' 0";
+                }
+                
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    toggleLikePhoto(id, btn);
+                });
+            });
+            
+            document.querySelectorAll('.photo-frame').forEach(frame => {
+                const id = frame.dataset.photoId;
+                frame.addEventListener('dblclick', function(e) {
+                    const btn = frame.querySelector('.photo-like-btn');
+                    if (btn) {
+                        let likedPhotos = JSON.parse(localStorage.getItem('liked_photo_ids') || '[]');
+                        if (!likedPhotos.includes(id)) {
+                            toggleLikePhoto(id, btn);
+                        }
+                        spawnDblClickHeart(e, frame);
+                    }
+                });
+            });
+        }
+
+        
+
+        // ==========================================
+        // GUESTBOOK / RSVP LOGIC
+        // ==========================================
+        const defaultComments = [
+            {
+                id: "default_1",
+                name: "Rizky Amanda",
+                waktu: Date.now() - 5 * 60 * 1000, // 5 mins ago
+                attendance: "HADIR",
+                message: "Selamat ya! Akhirnya perjuangan kita terbayar. Gak sabar mau foto bareng pas wisuda nanti! 🎉",
+                avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuAnshSUag6fEQzQoDBAYimjdKTgRp8BcKn5aaHsoIJvrWVDof4yxqEHGIO-TS2UNVvOno-AwMrgSrqDGmK7uaXpJqwfUqyieP-FTcAjELr1ZCzgoAKslrn_sYLuxf5PEGsGOcXotKT6IiJMn4A3CiwkBhclrZHWSYGSDMwyYulLbKBalecfvH-wkuQKDsMlWkl2cKT-B3Y8A2_6fS1N8QvRH1UDpSFYwClfdoJNyOrsOm8_tFWMf3xddNLbfhaGJbuOlx0O_dsfOfHL",
+                likes: 2
+            },
+            {
+                id: "default_2",
+                name: "Sarah Jasmine",
+                waktu: Date.now() - 60 * 60 * 1000, // 1 hour ago
+                attendance: "HADIR",
+                message: "Congratulations on your graduation! May this be the start of many more wonderful achievements in your life. Stay awesome and keep inspiring us all. See you there bestie! ✨🎓💖",
+                avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuCN9wzeAe0Q2IND_g2iazYrJDBIcuRhm7G3ttlNQAMkPWQHEpTsJRAOKcBsa_EDQnxjrbCo2Hxv5mEPD_wi0m7rck-U_OALousLLIH7nXh6Wsl7bB6imTljm-O4iWlGyZsx2eTuBxni1FJcYazxpZOsFs8dWPXEEQFr7XfI4zZVfqYSzAzeNz1tAjgwyVIMfXNU88CA5D3GWjunKhgVJziaMkL2u9kj-pMoIoOelxvfZK1yl2EBMxm-VKusuNrD5C6hRPB5AE87iD7j",
+                likes: 3
+            },
+            {
+                id: "default_3",
+                name: "Budi Santoso",
+                waktu: Date.now() - 3 * 60 * 60 * 1000, // 3 hours ago
+                attendance: "TIDAK BISA",
+                message: "Yah maaf banget berbarengan sama acara kantor. Tapi tetep bangga banget sama kamu! Sukses terus ya bro! 🙏",
+                avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuDEy0He15N8ldD6lZn3HcB6aB7T3ZeAfY5BURB4IPmdsa1Yi-4pW7JxuOBFK9nyxh_siMhQB6NBpF4kxEbt72-uAs0aNrBF93XKjFgjSTFuscBqf1REMaY5tit0hoZLTWUJe77oBTivATEIOXidhbKXxDwOqGcZ-IXqv4QpV6zQb9oeJHpHPtyM7oTzP3FBpH8sc3b-x5mTPxIm_incBBJQImmlGQhCss5vxaz8At2Sr-fYeIBcEVJl4iOU7QMzK8f3ULxewF59gBqU",
+                likes: 0
+            }
+        ];
+
+        function formatRelativeTime(waktu) {
+            const diff = Date.now() - waktu;
+            const seconds = Math.floor(diff / 1000);
+            const minutes = Math.floor(seconds / 60);
+            const hours = Math.floor(minutes / 60);
+            const days = Math.floor(hours / 24);
+
+            if (days > 0) return `${days} hari yang lalu`;
+            if (hours > 0) return `${hours} jam yang lalu`;
+            if (minutes > 0) return `${minutes} menit yang lalu`;
+            return "Baru saja";
+        }
+
+        function toggleLikeComment(id) {
+            let likedComments = JSON.parse(localStorage.getItem('liked_comment_ids') || '[]');
+            let customComments = JSON.parse(localStorage.getItem('custom_comments') || '[]');
+            
+            const customIndex = customComments.findIndex(c => c.id === id);
+            const defaultIndex = defaultComments.findIndex(c => c.id === id);
+            
+            const isLiked = likedComments.includes(id);
+            
+            if (isLiked) {
+                likedComments = likedComments.filter(item => item !== id);
+                if (customIndex !== -1) {
+                    customComments[customIndex].likes = Math.max(0, (customComments[customIndex].likes || 0) - 1);
+                } else if (defaultIndex !== -1) {
+                    let defaultLikes = JSON.parse(localStorage.getItem('default_comment_likes') || '{}');
+                    defaultLikes[id] = (defaultLikes[id] || defaultComments[defaultIndex].likes || 0) - 1;
+                    localStorage.setItem('default_comment_likes', JSON.stringify(defaultLikes));
+                }
+            } else {
+                likedComments.push(id);
+                if (customIndex !== -1) {
+                    customComments[customIndex].likes = (customComments[customIndex].likes || 0) + 1;
+                } else if (defaultIndex !== -1) {
+                    let defaultLikes = JSON.parse(localStorage.getItem('default_comment_likes') || '{}');
+                    defaultLikes[id] = (defaultLikes[id] || defaultComments[defaultIndex].likes || 0) + 1;
+                    localStorage.setItem('default_comment_likes', JSON.stringify(defaultLikes));
+                }
+            }
+            
+            localStorage.setItem('liked_comment_ids', JSON.stringify(likedComments));
+            localStorage.setItem('custom_comments', JSON.stringify(customComments));
+            
+            renderComments();
+        }
+
+        function renderComments() {
+            const guestbookList = document.getElementById('guestbook-list');
+            if (!guestbookList) return;
+            
+            const customComments = JSON.parse(localStorage.getItem('custom_comments') || '[]');
+            
+            // Sync default comments likes overrides
+            const defaultLikes = JSON.parse(localStorage.getItem('default_comment_likes') || '{}');
+            defaultComments.forEach(comment => {
+                if (defaultLikes[comment.id] !== undefined) {
+                    comment.likes = defaultLikes[comment.id];
+                }
+            });
+
+            // Combine
+            const allComments = [...customComments, ...defaultComments];
+            const likedComments = JSON.parse(localStorage.getItem('liked_comment_ids') || '[]');
+            
+            guestbookList.innerHTML = '';
+            
+            allComments.forEach((comment, index) => {
+                const isLiked = likedComments.includes(comment.id);
+                const card = document.createElement('div');
+                
+                // Keep Sarah Jasmine's layout size
+                let colSpan = '';
+                if (comment.id === "default_2" && index === 1) {
+                    colSpan = 'md:col-span-2';
+                }
+                
+                card.className = `glass-card p-6 rounded-lg shadow-sm flex flex-col gap-4 transform hover:-translate-y-1 transition-transform ${colSpan}`;
+                card.dataset.id = comment.id;
+                
+                const relativeTime = formatRelativeTime(comment.waktu);
+                
+                // Likes Section HTML
+                let likesSectionHTML = '';
+                if (comment.likes > 0) {
+                    likesSectionHTML = `
+                        <div class="mt-auto pt-4 border-t border-outline-variant/30 flex gap-4">
+                            <button class="like-comment-btn flex items-center gap-2 group focus:outline-none" data-id="${comment.id}">
+                                <span class="material-symbols-outlined text-sm transition-transform group-hover:scale-125 ${isLiked ? 'text-tertiary' : 'text-outline'}" style="font-variation-settings: 'FILL' ${isLiked ? 1 : 0};">favorite</span>
+                                <span class="text-[12px] ${isLiked ? 'text-tertiary font-bold' : 'text-outline'}">${comment.likes} orang menyukai ini</span>
+                            </button>
+                        </div>
+                    `;
+                } else {
+                    likesSectionHTML = `
+                        <div class="mt-auto pt-4 border-t border-outline-variant/30 flex gap-4">
+                            <button class="like-comment-btn flex items-center gap-2 group focus:outline-none" data-id="${comment.id}">
+                                <span class="material-symbols-outlined text-sm transition-transform group-hover:scale-125 text-outline" style="font-variation-settings: 'FILL' 0;">favorite</span>
+                                <span class="text-[12px] text-outline">Sukai</span>
+                            </button>
+                        </div>
+                    `;
+                }
+                
+                card.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <img alt="Avatar" class="w-12 h-12 rounded-full" src="${comment.avatar}"/>
+                            <div>
+                                <p class="font-headline-md text-[18px] text-primary">${comment.name}</p>
+                                <p class="text-xs text-outline">${relativeTime}</p>
+                            </div>
+                        </div>
+                        <span class="${comment.attendance === 'HADIR' ? 'bg-primary-container text-on-primary-container' : 'bg-tertiary-container text-on-tertiary-container'} text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1">
+                            <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">${comment.attendance === 'HADIR' ? 'check_circle' : 'cancel'}</span>
+                            ${comment.attendance}
+                        </span>
+                    </div>
+                    <p class="font-body-md text-on-surface-variant italic leading-relaxed">"${comment.message}"</p>
+                    ${likesSectionHTML}
+                `;
+                
+                guestbookList.appendChild(card);
+            });
+            
+            // Add listeners to comments like buttons
+            guestbookList.querySelectorAll('.like-comment-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const id = this.dataset.id;
+                    toggleLikeComment(id);
+                });
+            });
+            
+            // Update total messages count
+            const countEl = document.getElementById('pesan-count');
+            if (countEl) {
+                const totalCount = 45 + allComments.length;
+                countEl.innerHTML = `${totalCount} Pesan Terkirim`;
+            }
+        }
+
+        // RSVP Form Submission
+        document.getElementById('rsvp-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const btn = this.querySelector('button[type="submit"]');
+    const originalContent = btn.innerHTML;
+
+    const nameInput = this.querySelector('input[type="text"]');
+    const attendanceInput = this.querySelector('input[name="attendance"]:checked');
+    const messageInput = this.querySelector('textarea');
+    const guestSelect = this.querySelector('select');
+
+    const nama = nameInput.value;
+    const attendance =
+        attendanceInput.value === 'yes'
+            ? 'HADIR'
+            : 'TIDAK BISA';
+
+    const pesan = messageInput.value;
+    const guests = guestSelect.value;
+
+    btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Mengirim...';
+    btn.disabled = true;
+
+    try {
+        const payload = {
+            nama,
+            pesan,
+            attendance,
+            guests,
+            invitedAs: new URLSearchParams(window.location.search).get('to') || ''
+        };
+
+        const response = await fetch(window.apiEndpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+        if (!response.ok) {
+            throw new Error(result.error || 'Gagal mengirim RSVP');
+        }
+
+        saveLocalRsvpData(result);
+        setRsvpStatus(true, 'Berhasil terkirim! RSVP sekarang terlihat oleh semua pengunjung.');
+        updateGuestbook(result);
+
+        btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Berhasil!';
+        btn.classList.add('bg-green-500');
+        btn.classList.remove('bg-primary');
+
+        confettiEffect();
+
+        setTimeout(() => {
+            btn.innerHTML = originalContent;
+            btn.classList.remove('bg-green-500');
+            btn.classList.add('bg-primary');
+            btn.disabled = false;
+            nameInput.value = '';
+            messageInput.value = '';
+            guestSelect.value = '1';
+        }, 2500);
+    } catch (error) {
+        console.error(error);
+        
+        const savedRsvp = {
+            nama,
+            pesan,
+            attendance,
+            guests,
+            invitedAs: new URLSearchParams(window.location.search).get('to') || '',
+            waktu: Date.now()
+        };
+
+        const localEntries = window.loadLocalRsvpData();
+        localEntries.unshift(savedRsvp);
+        window.saveLocalRsvpData(localEntries);
+        updateGuestbook(localEntries);
+        window.setRsvpStatus(false, 'Neon API tidak aktif. RSVP disimpan lokal di perangkat ini.');
+        btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Berhasil!';
+        btn.classList.add('bg-green-500');
+        btn.classList.remove('bg-primary');
+
+        setTimeout(() => {
+            btn.innerHTML = originalContent;
+            btn.classList.remove('bg-green-500');
+            btn.classList.add('bg-primary');
+            btn.disabled = false;
+            nameInput.value = '';
+            messageInput.value = '';
+            guestSelect.value = '1';
+        }, 2500);
+    }
+});
+
+        // FAB Comment Scroll to Form
+        document.getElementById('fab-comment').addEventListener('click', () => {
+            document.getElementById('rsvp-form').scrollIntoView({ behavior: 'smooth' });
+            document.querySelector('input[placeholder="Masukkan namamu"]').focus();
+        });
+
+        // Scroll Spy / Navigation Active Highlighting
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('#desktop-menu a');
+        const bottomNavLinks = document.querySelectorAll('#bottom-menu a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= (sectionTop - 250)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            // Update Desktop Nav
+            navLinks.forEach(link => {
+                link.classList.remove('active-nav');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active-nav');
+                }
+            });
+
+            // Update Bottom Nav
+            bottomNavLinks.forEach(link => {
+                link.classList.remove('active-bottom-nav');
+                const icon = link.querySelector('.material-symbols-outlined');
+                if (icon) icon.style.fontVariationSettings = "'FILL' 0";
+
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active-bottom-nav');
+                    if (icon) icon.style.fontVariationSettings = "'FILL' 1";
+                }
+            });
+        });
+
+        // Theme Toggle Button Handler (Real Dark mode + Persistence)
+        const themeButton = document.getElementById('theme-button');
+        themeButton.addEventListener('click', function() {
+            this.animate([
+                { transform: 'scale(1) rotate(0deg)' },
+                { transform: 'scale(1.3) rotate(180deg)' },
+                { transform: 'scale(1) rotate(360deg)' }
+            ], {
+                duration: 500,
+                easing: 'ease-in-out'
+            });
+
+            const isDark = document.documentElement.classList.contains('dark');
+            if (isDark) {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+                localStorage.setItem('theme', 'light');
+                this.textContent = 'dark_mode';
+            } else {
+                document.documentElement.classList.remove('light');
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                this.textContent = 'light_mode';
+            }
+
+            confettiEffect();
+        });
+
+        // Initialize state on DOM load
+        window.addEventListener('DOMContentLoaded', () => {
+            // Apply theme toggle button icon
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            themeButton.textContent = currentTheme === 'dark' ? 'light_mode' : 'dark_mode';
+            
+            // Load and render
+            renderComments();
+            initPhotoLikes();
+        });
+    </script>
+</body>
+</html>
